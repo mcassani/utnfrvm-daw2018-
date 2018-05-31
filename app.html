@@ -40,7 +40,16 @@
         </div>
     </nav>
     <div class="container">
-       
+        <div class="row">
+            <button type="button" class="btn btn-success" ng-click="agregarHabitacion()" ng-disabled="!buscador">Comenzar Búsqueda</button>
+            <button type="button" class="btn btn-danger" ng-click="limpiarBuscador()">Borrar</button>
+        </div>
+        <div class="row">
+            {{habitaciones}}
+        </div>
+        <div class="row">
+            <button type="button" class="btn" ng-class="{'btn-primary' : (hab % 2 ===0),  'btn-success' : (hab % 2 ===1)}" ng-repeat="hab in habitaciones">{{hab}}</button>
+        </div>
 
     </div>
 
