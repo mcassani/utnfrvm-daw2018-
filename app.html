@@ -7,6 +7,7 @@
     <title>APP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <script src="libs/jquery/jquery-3.3.1.js"></script>
     <script src="libs/bootstrap/js/bootstrap.js"></script>
@@ -42,33 +43,7 @@
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <table class="table table-bordered">
-                <tr>
-                    <th>ID</th>
-                    <th class="col-sm-4">Titulo</th>
-                    <th>Descripcion</th>
-                    <th>Idioma</th>
-                    <th>Fecha</th>
-                    <th>Reemplazo</th>
-                    <th>Alquiler</th>
-                    <th></th>
-                </tr>
-                <tr ng-class="{'danger' : peli.id % 2 === 0}" ng-repeat="peli in peliculas | filter : {titulo: buscador} | orderBy : 'titulo' : true ">
-                    <td>{{peli.id}}</td>
-                    <td>{{peli.titulo | uppercase}}</td>
-                    <td>{{peli.descripcion | lowercase}}</td>
-                    <td>{{peli.lenguaje.nombre}}</td>
-                    <td>{{peli.ultimaActualizacion | date : 'dd/MM/yy'}}</td>
-                    <td>{{peli.costoDeReemplazo | currency : '$' : 0}}</td>
-                    <td>{{peli.costoAlquiler | number : '3'}}</td>
-                </tr>
-                <tr ng-if="peliculas.length ===  0">
-                    <td class="text-center" colspan="6">No hay datos</td>
-                </tr>
-            </table>
-            <!-- <div ng-repeat="peli in peliculas">{{peli.titulo}}</div> -->
-        </div>
+        <ng-view></ng-view>
     </div>
 
 </body>

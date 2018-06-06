@@ -1,0 +1,33 @@
+<div class="row">
+            
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th class="col-sm-3">Titulo</th>
+                <th class="col-sm-3">Descripcion</th>
+                <th>Idioma</th>
+                <th>Fecha</th>
+                <th>Reemplazo</th>
+                <th>Alquiler</th>
+                <th></th>
+            </tr>
+            <tr ng-class="{'danger' : peli.id % 2 === 0}" ng-repeat="peli in peliculas | filter : {titulo: buscador} | orderBy : 'titulo' : true ">
+                <td>{{peli.id}}</td>
+                <td>{{peli.titulo | uppercase}}</td>
+                <td>{{peli.descripcion | lowercase}}</td>
+                <td>{{peli.lenguaje.nombre}}</td>
+                <td>{{peli.ultimaActualizacion | date : 'dd/MM/yy'}}</td>
+                <td>{{peli.costoDeReemplazo | currency : '$' : 0}}</td>
+                <td>{{peli.costoAlquiler | number : '3'}}</td>
+                <td>
+                    <span class="btn btn-primary btn-xs" ng-click="consultarPelicula(peli.id, $index)">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </td>
+            </tr>
+            <tr ng-if="peliculas.length ===  0">
+                <td class="text-center" colspan="6">No hay datos</td>
+            </tr>
+        </table>
+        <!-- <div ng-repeat="peli in peliculas">{{peli.titulo}}</div> -->
+    </div>
