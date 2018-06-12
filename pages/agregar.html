@@ -1,1 +1,35 @@
-NUEVO
+<div class="row">
+    <h3>Nueva Película</h3>
+    <hr>
+</div>
+<div class="row">
+    <div class="form-group col-sm-3">
+        <label>ID</label>
+        <input type="number" class="form-control" placeholder="ID" ng-model="pelicula.id">
+    </div>
+    <div class="form-group col-sm-12">
+        <label>Titulo</label>
+        <input type="text" class="form-control" placeholder="Ingrese título de la película" ng-model="pelicula.titulo">
+    </div>
+    <div class="form-group col-sm-12">
+        <label>Descripción</label>
+        <input type="text" class="form-control" placeholder="Ingrese la descripción de la película" ng-model="pelicula.descripcion">
+    </div>
+    <div class="form-group col-sm-12">
+        <label>Fecha</label>
+        <input type="date" class="form-control" ng-model="pelicula.ultimaActualizacion">
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Costo de Reemplazo</label>
+        <input type="number" class="form-control" ng-model="pelicula.costoDeReemplazo">
+    </div>
+    <div class="form-group col-sm-4">
+        <label>Costo Alquiler</label>
+        <input type="number" class="form-control" ng-model="pelicula.costoAlquiler">
+    </div>
+</div>
+<div class="row pull-right">
+        <button type="button" class="btn btn-success" ng-click="aceptar()">Aceptar</button>
+        <button type="button" class="btn btn-danger">Cancelar</button>
+
+</div>

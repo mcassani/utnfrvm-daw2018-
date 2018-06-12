@@ -10,6 +10,10 @@
             return peliculas;
         };
 
+        this.guardar = function (nuevoObjeto) {
+            peliculas.push(nuevoObjeto);
+        }
+
         /////////////////////////////////////////////////////////////
 
         var peliculas = [{
