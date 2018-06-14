@@ -11,7 +11,7 @@
                 <th>Alquiler</th>
                 <th></th>
             </tr>
-            <tr ng-class="{'danger' : peli.id % 2 === 0}" ng-repeat="peli in peliculas | filter : {titulo: buscador} | orderBy : 'titulo' : true ">
+            <tr ng-class="{'danger' : peli.id % 2 === 0}" ng-repeat="peli in peliculas">
                 <td>{{peli.id}}</td>
                 <td>{{peli.titulo | uppercase}}</td>
                 <td>{{peli.descripcion | lowercase}}</td>

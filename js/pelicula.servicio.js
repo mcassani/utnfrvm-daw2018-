@@ -4,14 +4,25 @@
         .module('MiApp')
         .service('Pelicula', MiServicio);
 
-    function MiServicio() {
+    function MiServicio($http) {
 
         this.get = function () {
-            return peliculas;
+            var promesa = $http.get('https://jsonplaceholder.typicode.com/users');
+            return promesa;
         };
 
         this.guardar = function (nuevoObjeto) {
             peliculas.push(nuevoObjeto);
+        }
+
+        this.getElemento = function (id) {
+            var peliculaSeleccionada = undefined;
+            peliculas.forEach(function (unaPelicula) {
+                if (unaPelicula.id == id) {
+                    peliculaSeleccionada = unaPelicula;
+                }
+            });
+            return peliculaSeleccionada;
         }
 
         /////////////////////////////////////////////////////////////
