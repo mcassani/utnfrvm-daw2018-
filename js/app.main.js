@@ -4,15 +4,15 @@
         .module('MiApp')
         .controller('MiCtrl', MiCtrl);
 
-    function MiCtrl($scope, $location, Pelicula) {
+    function MiCtrl($scope, $location, PeliculaResource) {
 
         $scope.consultarPelicula = function consultarPelicula(id) {
             $location.path('/agregar/' + id);
         };
 
-        Pelicula.get().then(function (rta) {
-            $scope.peliculas = rta.data;
-        })
+        PeliculaResource.query(function (rta) {
+            $scope.peliculas = rta;
+        });
     }
 
 })();
