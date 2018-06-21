@@ -4,7 +4,8 @@
         .module('MiApp')
         .controller('PeliculaEditarCtrl', PeliculaEditarCtrl);
 
-    function PeliculaEditarCtrl($scope, $routeParams, PeliculaResource, LenguajeResource) {
+    function PeliculaEditarCtrl($scope, $routeParams, PeliculaResource) {
+
 
         if ($routeParams.id === 'nuevo') {
             $scope.titulo = 'Nueva Pelicula';
