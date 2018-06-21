@@ -10,8 +10,12 @@
             $location.path('/agregar/' + id);
         };
 
-        PeliculaResource.query(function (rta) {
-            $scope.peliculas = rta;
+        PeliculaResource.get({
+            page: 0,
+            size: 25,
+            sort : 'id,desc'
+        }, function (rta) {
+            $scope.peliculas = rta.content;
         });
     }
 
