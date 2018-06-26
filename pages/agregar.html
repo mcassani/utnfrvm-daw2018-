@@ -27,9 +27,19 @@
         <label>Costo Alquiler</label>
         <input type="number" class="form-control" ng-model="pelicula.costoAlquiler">
     </div>
+    <div class="form-group col-sm-6">
+        <label>Lenguaje</label>
+        <select class="form-control" ng-model="pelicula.lenguaje" ng-options="lenguaje.nombre for lenguaje in lenguajes track by lenguaje.id">
+        </select>
+    </div>
+    <div class="form-group col-sm-6">
+            <label>Lenguaje Original</label>
+            <select class="form-control" ng-model="pelicula.lenguajeOriginal" ng-options="lenguaje.nombre for lenguaje in lenguajes track by lenguaje.id">
+            </select>
+        </div>
 </div>
 <div class="row pull-right">
-        <button type="button" class="btn btn-success" ng-click="aceptar()">Aceptar</button>
-        <button type="button" class="btn btn-danger">Cancelar</button>
+    <button type="button" class="btn btn-success" ng-click="aceptar()">Aceptar</button>
+    <button type="button" class="btn btn-danger">Cancelar</button>
 
 </div>

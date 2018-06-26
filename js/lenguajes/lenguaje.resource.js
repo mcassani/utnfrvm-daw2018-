@@ -2,10 +2,10 @@
     'use strict';
     angular
         .module('MiApp')
-        .service('PeliculaResource', PeliculaResource);
+        .service('LenguajeResource', LenguajeResource);
 
-    function PeliculaResource($resource, URL_SERVIDOR) {
-        return $resource(URL_SERVIDOR + 'peliculas/:id', {
+    function LenguajeResource($resource, URL_SERVIDOR) {
+        return $resource(URL_SERVIDOR + 'lenguajes/:id', {
             id: '@id'
         }, {
             update: {

@@ -4,8 +4,9 @@
         .module('MiApp')
         .controller('PeliculaEditarCtrl', PeliculaEditarCtrl);
 
-    function PeliculaEditarCtrl($scope, $routeParams, PeliculaResource) {
+    function PeliculaEditarCtrl($scope, $routeParams, $location, $uibModal, PeliculaResource, LenguajeResource) {
 
+        $scope.lenguajes = LenguajeResource.query();
 
         if ($routeParams.id === 'nuevo') {
             $scope.titulo = 'Nueva Pelicula';
@@ -16,21 +17,36 @@
                 id: $routeParams.id
             });
         }
+        
+        //Declaro variable para hacerla visible
+        var ventanaCargando = {};
+        var callbackExito = function (data) {
+            ventanaCargando.close();
+            $location.path("/");
+        };
+
+        var callbackError = function (error) {
+            ventanaCargando.close();
+            console.log(error.data.message);
+        };
 
         $scope.aceptar = function () {
-            console.log($scope.pelicula);
-            if ($routeParams.id === 'nuevo') {
-                $scope.pelicula.lenguajeOriginal = {
-                    id: 6
-                };
-                $scope.pelicula.lenguaje = {
-                    id: 6
-                };
-                PeliculaResource.save($scope.pelicula);
-            } else {
-                PeliculaResource.update($scope.pelicula);
-            }
+            if ($scope.pelicula.lenguaje && $scope.pelicula.lenguajeOriginal) {
+                //Abro ventana de cargando
+                ventanaCargando = $uibModal.open({
+                    templateUrl: 'pages/dialogos/dialogo-cargando.html',
+                    size: 'sm',
+                    backdrop: 'static'
+                });
+                if ($routeParams.id === 'nuevo') {
+                    PeliculaResource.save($scope.pelicula, callbackExito, callbackError);
+                } else {
+                    PeliculaResource.update($scope.pelicula, callbackExito, callbackError);
+                }
 
+            } else {
+                alert("Complete los campos requeridos");
+            }
         }
 
     }
